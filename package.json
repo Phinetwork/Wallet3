@@ -8,9 +8,11 @@
     "bundle": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle",
     "buildApk": "cd ./android && ./gradlew assembleRelease && cd ..",
     "buildAab": "cd ./android && ./gradlew bundleRelease && cd ..",
-    "postinstall": "node_modules/.bin/rn-nodeify --install crypto,buffer,react-native-randombytes,vm,stream,http,https,os,url,net,process --hack"
+    "postinstall": "node_modules/.bin/rn-nodeify --install crypto,buffer,react-native-randombytes,vm,stream,http,https,os,url,net,process --hack",
+    "clean": "rm -rf node_modules .expo ios/Pods ios/Podfile.lock && yarn"
   },
   "dependencies": {
+    "@ethersproject/shims": "^5.7.0",
     "@expo/vector-icons": "^13.0.0",
     "@metamask/eth-sig-util": "^4.0.1",
     "@metamask/mobile-provider": "^2.1.0",
@@ -29,6 +31,7 @@
     "crypto-es": "^1.2.7",
     "d3-shape": "^3.1.0",
     "dayjs": "^1.11.5",
+    "delay": "^5.0.0",
     "eth-phishing-detect": "^1.2.0",
     "eth-url-parser": "^1.0.4",
     "ethereumjs-util": "^7.1.5",
@@ -80,6 +83,7 @@
     "react-native-flash-message": "^0.3.1",
     "react-native-gesture-handler": "~2.6.0",
     "react-native-image-colors": "^1.5.1",
+    "react-native-material-menu": "^2.0.0",
     "react-native-material-ripple": "^0.9.1",
     "react-native-modalize": "^2.1.1",
     "react-native-os": "github:aprock/react-native-os",
