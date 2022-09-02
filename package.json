@@ -1,8 +1,8 @@
 {
   "scripts": {
     "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "android": "expo run:android --device",
+    "ios": "expo run:ios --device",
     "web": "expo start --web",
     "eject": "expo eject",
     "bundle": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle",
