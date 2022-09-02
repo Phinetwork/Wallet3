@@ -1,31 +1,34 @@
-import { DrawerActions, useNavigation } from '@react-navigation/native';
-import { Feather, Ionicons } from '@expo/vector-icons';
-import { Platform, Text, TouchableOpacity, View } from 'react-native';
-import React, { useEffect, useState } from 'react';
+// @ts-nocheck
 
+import { Feather, Ionicons } from '@expo/vector-icons';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Platform, Text, TouchableOpacity, View } from 'react-native';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { observer } from 'mobx-react-lite';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import MessageKeys from '../common/MessageKeys';
+import i18n from '../i18n';
+import { ReactiveScreen } from '../utils/device';
 import App from '../viewmodels/App';
+import Networks from '../viewmodels/Networks';
+import Theme from '../viewmodels/settings/Theme';
+import SinglePageBrowserScreen from './browser/Browser';
 import BrowserScreen from './browser/MultiTabIndex';
 import ContactsScreen from './contacts';
 import DAppsScreen from './dapps';
 import Drawer from './drawer';
-import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
-import MessageKeys from '../common/MessageKeys';
+import ExchangeScreen from './exchange';
 import NFTList from './nfts/List';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import Networks from '../viewmodels/Networks';
-import { ReactiveScreen } from '../utils/device';
 import SettingScreen from './settings';
-import SinglePageBrowserScreen from './browser/Browser';
-import Theme from '../viewmodels/settings/Theme';
 import WalletScreen from './wallet';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import i18n from '../i18n';
-import { observer } from 'mobx-react-lite';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const DrawerRoot = createDrawerNavigator();
-const TabNavigation = createBottomTabNavigator();
+const TabNavigation = createBottomTabNavigator<any>();
 
 type RootStackParamList = {
   Home: undefined;
@@ -61,15 +64,25 @@ const RootTab = observer(() => {
             Wallet: 'credit-card',
             Explore: 'compass',
             NFTs: 'star',
+            Exchange: 'refresh-ccw',
           };
 
-          return <Feather name={icons[route.name]} size={size} color={focused ? current.color : 'gray'} />;
+          return <Feather name={icons[route.name]} size={22} color={focused ? current.color : 'gray'} />;
         },
       })}
     >
       {currentAccount?.nfts.nfts.length ?? 0 > 0 ? (
         <Screen name="NFTs" component={NFTList} options={{ tabBarLabel: t('home-tab-arts'), headerShown: false }} />
       ) : undefined}
+
+      <Screen
+        name="Exchange"
+        component={ExchangeScreen}
+        options={{
+          tabBarLabel: t('home-tab-exchange'),
+          headerShown: false,
+        }}
+      />
 
       <Screen
         name="Wallet"
