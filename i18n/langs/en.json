@@ -40,7 +40,7 @@
   "home-history-item-type-approve": "Approve",
   "home-history-item-to": "To",
   "home-tab-wallet": "Wallet",
-  "home-tab-swap": "Swap",
+  "home-tab-exchange": "Swap",
   "home-tab-arts": "Arts",
   "nft-button-transfer": "Transfer",
   "nft-button-view-on-website": "View on Website",
@@ -67,6 +67,13 @@
   "browser-sections-education": "Education",
   "browser-sections-others": "Other",
   "browser-favorites": "Favorites",
+  "exchange-balance": "Balance",
+  "exchange-to": "To (estimated)",
+  "exchange-slippage-tolerance": "Slippage tolerance",
+  "exchange-no-routes": "No swap routes.",
+  "exchange-add-token-placeholder": "Coin symbol or address",
+  "exchange-tokens": "Tokens",
+  "exchange-add-token-button": "ADD",
   "qrscan-title": "Scan",
   "qrscan-go-to-settings": "Go To Settings",
   "qrscan-no-permission": "No access to camera",
@@ -270,5 +277,6 @@
   "button-remove": "Remove",
   "button-close-all": "Close All",
   "button-share": "Share",
-  "slippage": "Slippage"
+  "button-approve": "Approve",
+  "button-swap": "Swap"
 }
